@@ -4,7 +4,7 @@ const printBoard = (board) => {
   console.log(board[1].join(' | '));
   console.log(board[2].join(' | '));
 }
-let board = [
+const board = [
   [' ', ' ', ' '],
   [' ', ' ', ' '],
   [' ', ' ', ' ']
