@@ -19,7 +19,6 @@ const generateBombBoard = (numberOfRows, numberOfColumns, numberOfBombs) => {
 
   let numberOfBombsPlaced = 0;
   while (numberOfBombsPlaced < numberOfBombs) {
-    // Bombs currently have the potential to be placed on top of other bombs which will be fixed later
     let randomRowIndex = Math.floor(Math.random() * numberOfRows);
     let randomColumnIndex = Math.floor(Math.random() * numberOfColumns);
     if (board[randomRowIndex][randomColumnIndex] !== 'B') {
