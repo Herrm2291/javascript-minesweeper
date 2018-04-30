@@ -22,6 +22,37 @@ class Board {
     this._numberOfTiles--;
   };
 
+  getNumberOfNeighborBombs(rowIndex, columnIndex) {
+    const neighborOffsets = [
+      [-1, -1],
+      [-1, 0],
+      [-1, 1],
+      [0, -1],
+      [0, 1],
+      [1, -1],
+      [1, 0],
+      [1, 1]
+    ];
+
+    const numberOfRows = this._bombBoard.length;
+    const numberOfColumns = this._bombBoard[0].length;
+    let numberOfBombs = 0;
+
+    neighborOffsets.forEach(offset => {
+      const neighborRowIndex = rowIndex + offset[0];
+      const neightborColumnIndex = columnIndex + offset[1];
+      if (neighborRowIndex >= 0 &&
+          neighborRowIndex < numberOfRows &&
+          neighborColumnIndex >= 0 &&
+          neighborColumnIndex < numberOfColumns) {
+        if (this._bombBoard[neighborRowIndex][neightborColumnIndex] === 'B') {
+          numberOfBombs++;
+        }
+      }
+    });
+    return numberOfBombs;
+  };
+
   
 
 };
@@ -54,37 +85,6 @@ const generateBombBoard = (numberOfRows, numberOfColumns, numberOfBombs) => {
       numberOfBombsPlaced++
     }
   } return board;
-};
-
-const getNumberOfNeighborBombs = (bombBoard, rowIndex, columnIndex) => {
-  const neighborOffsets = [
-    [-1, -1],
-    [-1, 0],
-    [-1, 1],
-    [0, -1],
-    [0, 1],
-    [1, -1],
-    [1, 0],
-    [1, 1]
-  ];
-
-  const numberOfRows = bombBoard.length;
-  const numberOfColumns = bombBoard[0].length;
-  let numberOfBombs = 0;
-
-  neighborOffsets.forEach(offset => {
-    const neighborRowIndex = rowIndex + offset[0];
-    const neightborColumnIndex = columnIndex + offset[1];
-    if (neighborRowIndex >= 0 &&
-        neighborRowIndex < numberOfRows &&
-        neightborColumnIndex >= 0 &&
-        neightborColumnIndex < numberOfColumns) {
-      if (bombBoard[neighborRowIndex][neightborColumnIndex] === 'B') {
-        numberOfBombs++;
-      }
-    }
-  });
-  return numberOfBombs;
 };
 
 const printBoard = board => {
