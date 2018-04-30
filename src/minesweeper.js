@@ -53,7 +53,11 @@ class Board {
     return numberOfBombs;
   };
 
-  
+  hasSafeTiles() {
+    return this._numberOfTiles !== this._numberOfBombs;
+  }
+
+
 
 };
 
@@ -87,9 +91,9 @@ const generateBombBoard = (numberOfRows, numberOfColumns, numberOfBombs) => {
   } return board;
 };
 
-const printBoard = board => {
+print() {
   console.log(board.map(row => row.join(' | ')).join('\n'));
-}
+};
 
 let playerBoard = generatePlayerBoard(3, 4);
 let bombBoard = generateBombBoard(3, 4, 5);
