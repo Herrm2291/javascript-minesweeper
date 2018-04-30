@@ -10,7 +10,21 @@ class Board {
     return this._playerBoard;
   }
 
-}
+  flipTile(rowIndex, columnIndex) {
+    if (this._playerBoard[rowIndex][columnIndex] !== ' ') {
+      console.log('This tile has already been flipped!');
+      return;
+    } else if (this._bombBoard[rowIndex][columnIndex] === 'B') {
+        this._bombBoard[rowIndex][columnIndex] = 'B';
+    } else {
+      this._playerBoard[rowIndex][columnIndex] = this.getNumberOfNeighborBombs(rowIndex, columnIndex);
+    }
+    this._numberOfTiles--;
+  };
+
+  
+
+};
 
 const generatePlayerBoard = (numberOfRows, numberOfColumns) => {
   const board = [];
@@ -71,17 +85,6 @@ const getNumberOfNeighborBombs = (bombBoard, rowIndex, columnIndex) => {
     }
   });
   return numberOfBombs;
-};
-
-const flipTile = (playerBoard, bombBoard, rowIndex, columnIndex) => {
-  if (playerBoard[rowIndex][columnIndex] !== ' ') {
-    console.log('This tile has already been flipped!');
-    return;
-  } else if (bombBoard[rowIndex][columnIndex] === 'B') {
-      bombBoard[rowIndex][columnIndex] = 'B';
-  } else {
-    playerBoard[rowIndex][columnIndex] = getNumberOfNeighborBombs(bombBoard, rowIndex, columnIndex);
-  }
 };
 
 const printBoard = board => {
