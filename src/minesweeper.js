@@ -33,8 +33,8 @@ class Board {
     if (this._playerBoard[rowIndex][columnIndex] !== ' ') {
       console.log('This tile has already been flipped!');
       return;
-    } else if (this._bombBoard[rowIndex][columnIndex] === 'B') {
-        this._bombBoard[rowIndex][columnIndex] = 'B';
+    } else if (this._playerBoard[rowIndex][columnIndex] === 'B') {
+        this._playerBoard[rowIndex][columnIndex] = 'B';
     } else {
       this._playerBoard[rowIndex][columnIndex] = this.getNumberOfNeighborBombs(rowIndex, columnIndex);
     };
@@ -112,5 +112,5 @@ class Board {
 };
 
 const g = new Game(3, 3, 3);
-g.playMove(0,0);
+g.playMove(0,1);
 
