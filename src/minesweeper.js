@@ -1,3 +1,9 @@
+class Game {
+  constructor(numberOfRows, numberOfColumns, numberOfBombs) {
+    this._board = new Board(numberOfRows, numberOfColumns, numberOfBombs);
+  }
+};
+
 class Board {
   constructor (numberOfRows, numberOfColumns, numberOfBombs) {
     this._numberOfBombs = numberOfBombs;
@@ -90,9 +96,6 @@ class Board {
       }
     } return board;
   };
-
-  
-
 };
 
 let playerBoard = generatePlayerBoard(3, 4);
