@@ -6,7 +6,9 @@ class Board {
     this._bombBoard = Board.generateBombBoard(numberOfRows, numberOfColumns, numberOfBombs);
   }
 
-  
+  get playerBoard() {
+    return this._playerBoard;
+  }
 
 }
 
